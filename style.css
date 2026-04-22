@@ -1,0 +1,112 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d1c9bf;
+}
+
+.custom-navbar {
+    background-color: rgba(86, 46, 23, 0.45);
+    margin: 10px 0;
+    padding: 10px 20px;
+}
+
+.custom-navbar .nav-link {
+    color: #fbf9ee;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #f2d7a1;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background-image: url("img/homepage.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-text {
+    position: absolute;
+    right: 90px;
+    top: 62%;
+    transform: translateY(-50%);
+    text-align: right;
+    color: white;
+}
+
+.hero-text h1 {
+    margin: 0;
+    font-size: 85px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.content-section {
+    min-height: 100vh;
+    padding: 110px 40px 40px 40px;
+}
+
+.content-section h2 {
+    margin-bottom: 20px;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .custom-navbar {
+        padding: 10px 15px;
+    }
+
+    .navbar-nav {
+        padding-top: 15px;
+        gap: 10px;
+    }
+
+    .hero-text {
+        right: 50px;
+        top: 58%;
+    }
+
+    .hero-text h1 {
+        font-size: 58px;
+    }
+}
+
+/* Telefon */
+@media (max-width: 576px) {
+    .custom-navbar {
+        margin: 0;
+    }
+
+    .hero {
+        background-position: center;
+    }
+
+    .hero-text {
+        right: 20px;
+        left: 20px;
+        top: 60%;
+        transform: translateY(-50%);
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 38px;
+    }
+
+    .content-section {
+        padding: 90px 20px 30px 20px;
+    }
+
+    .custom-navbar .nav-link {
+        font-size: 16px;
+    }
+}
