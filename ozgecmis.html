@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozgecmis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav w-100 justify-content-between text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Hakkında</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ozgecmis.html">Özgeçmiş</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sehrim">Şehrim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mirasimiz">Mirasımız</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ilgi">İlgi alanlarım</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#iletisim">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="cv-page-content">
+
+        <section class="cv-info">
+            <header>
+                <h2>Eğitim</h2>
+                <article>
+                    <h5>Sakarya Üniversitesi - Bilgisayar Mühendisliği</h5>
+                    <p>Programlama, problem çözme ve yazılım geliştirme alanlarında kendimi geliştiriyorum.</p>
+                </article>
+            </header>
+
+            <section>
+                <h2>Teknik Bilgiler</h2>
+                <article>
+                    <ul>
+                        <li>C#, C++, temel Python</li>
+                        <li>Nesne Yönelimli Programlama (OOP)</li>
+                        <li>Algoritma ve problem çözme</li>
+                        <li>HTML, CSS temel bilgisi</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section>
+                <h2>Sertifikalar ve Başarılar</h2>
+                <article>
+                    <p>
+                        Coursera üzerinden Introduction to Backend Development eğitimini tamamladım.
+                        Ayrıca Adatıp Sağlık Elçileri Projesi kapsamında hazırladığım proje ile 1.lik elde ettim.
+                    </p>
+                </article>
+            </section>
+        </section>
+
+        <section class="cv-images">
+            <img src="img/sau.jpg" alt="Sakarya Üniversitesi" onclick="openImage(this.src)">
+            <img src="img/asep.jpg" alt="Adatıp Sağlık Elçileri Projesi" onclick="openImage(this.src)">
+            <img src="img/coursera.jpg" alt="Coursera Sertifikası" onclick="openImage(this.src)">
+        </section>
+
+    </main>
+
+    <div id="imgModal" class="img-modal" onclick="closeImage()">
+    <img id="modalImg">
+    </div>
+    <script>
+    function openImage(src) {
+        const modal = document.getElementById("imgModal");
+        const img = document.getElementById("modalImg");
+
+        modal.style.display = "flex";
+        img.src = src;
+    }
+
+    function closeImage() {
+        document.getElementById("imgModal").style.display = "none";
+    }
+    </script>
+</body>
+</html>
