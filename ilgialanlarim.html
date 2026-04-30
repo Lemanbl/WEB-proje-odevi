@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlgi  alanlarım</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav w-100 justify-content-between text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hakkinda">Hakkında</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ozgecmis.html">Özgeçmiş</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sehrim.html">Şehrim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mirasimiz.html">Mirasımız</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ilgialanlarim.html">İlgi alanlarım</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#iletisim">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="api-section">
+    <h1>İlgi Alanlarım</h1>
+    <p>Yazılım ve teknoloji alanlarıyla ilgili kitapları Open Library API üzerinden listeliyorum.</p>
+
+    <button onclick="getBooks()" class="gosterbtn">Kitapları Göster</button>
+    <div id="loader" class="loader"></div>
+
+<div id="bookList" class="book-list"></div>
+
+    <div id="bookList" class="book-list"></div>
+</section>
+    <script src="scrpt.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -485,3 +485,75 @@ text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
         text-align: left;
     }
 }
+.api-section {
+    padding: 120px 40px 60px;
+    min-height: 100vh;
+}
+
+.api-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.api-section p {
+    text-align: center;
+    font-size: 18px;
+}
+
+.api-section button {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    background-color: #374651;
+    color: white;
+    font-weight: 600;
+}
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.book-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .book-list {
+        grid-template-columns: 1fr;
+    }
+}
+.gosterbtn{
+    transition: 0.3s;
+}
+.gosterbtn:hover {
+    background-color: #292b45;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);}
+.loader {
+    border: 6px solid #eee;
+    border-top: 6px solid #374651;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+    margin: 40px auto;
+    animation: spin 1s linear infinite;
+
+    display: none;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
