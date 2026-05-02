@@ -1,130 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>İletişim</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
-        <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav w-100 justify-content-between text-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Hakkında</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ozgecmis.html">Özgeçmiş</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sehrim.html">Şehrim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mirasimiz.html">Mirasımız</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ilgialanlarim.html">İlgi alanlarım</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="iletisim.html">İletişim</a>
-                    </li>
-                </ul>
-            </div>
-
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100 justify-content-between text-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Hakkında</a></li>
+                <li class="nav-item"><a class="nav-link" href="ozgecmis.html">Özgeçmiş</a></li>
+                <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+                <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
+                <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi alanlarım</a></li>
+                <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <section class="iletisim-page">
+<section class="iletisim-page">
 
-<h1>İletişim Formu</h1>
+    <h3>İletişim için formu doldurunuz</h3>
 
-<form id="app">
+    <form id="app" method="POST" action="sonuc.php" onsubmit="return validateJS()">
 
-    <input type="text" v-model="name" placeholder="Ad Soyad">
+        <input type="text" v-model="name" name="name" placeholder="Ad Soyad">
 
-    <input type="email" v-model="email" placeholder="Email">
+        <input type="email" v-model="email" name="email" placeholder="Email">
 
-    <input type="text" v-model="phone" placeholder="Telefon">
+        <input type="text" v-model="phone" name="telefon" placeholder="Telefon">
 
-    <input type="password" placeholder="Şifre">
+        <input type="password" name="password" placeholder="Şifre">
 
-    <input type="date">
+        <input type="date" name="date">
 
-    <label>Favori Renk:</label>
-    <input type="color">
+        <label><b>Favori Renk:</b></label>
+        <input type="color" name="renk">
 
-    <label>Memnuniyet:</label>
-    <input type="range">
+        <label><b>Memnuniyet:</b></label>
+        <input type="range" name="memnuniyet" min="0" max="10">
 
-    <p>Cinsiyet:</p>
-    <label><input type="radio" value="erkek" v-model="gender"> Erkek</label>
-    <label><input type="radio" value="kadin" v-model="gender"> Kadın</label>
+        <p><b>Cinsiyet:</b></p>
+        <label>
+            <input type="radio" name="gender" value="Erkek" v-model="gender"> Erkek
+        </label>
+        <label>
+            <input type="radio" name="gender" value="Kadın" v-model="gender"> Kadın
+        </label>
 
-    <p>İlgi Alanları:</p>
-    <label><input type="checkbox" value="yazilim" v-model="interests"> Yazılım</label>
-    <label><input type="checkbox" value="tasarim" v-model="interests"> Tasarım</label>
+        <p><b>İlgi Alanları:</b></p>
+        <label>
+            <input type="checkbox" name="interests[]" value="Yazılım" v-model="interests"> Yazılım
+        </label>
+        <label>
+            <input type="checkbox" name="interests[]" value="Tasarım" v-model="interests"> Tasarım
+        </label>
+        <label>
+            <input type="checkbox" name="interests[]" value="Yapay Zeka" v-model="interests"> Yapay Zeka
+        </label>
 
-    <select v-model="city">
-        <option value="">Şehir seç</option>
-        <option>İstanbul</option>
-        <option>Sakarya</option>
-        <option>Kocaeli</option>
-        <option>Izmir</option>
-        <option>Ankara</option>
-    </select>
+        <select name="city" v-model="city">
+            <option value="">Şehir seç</option>
+            <option>İstanbul</option>
+            <option>Sakarya</option>
+            <option>Kocaeli</option>
+            <option>İzmir</option>
+            <option>Ankara</option>
+        </select>
 
-    <textarea v-model="messageText" placeholder="Mesaj"></textarea>
+        <textarea v-model="messageText" name="mesaj" placeholder="Mesaj"></textarea>
 
-    <input type="file">
+        <input type="file" name="dosya">
 
-    <label>
-        <input type="checkbox" v-model="check">
-        Şartları kabul ediyorum
-    </label>
+        <label>
+            <input type="checkbox" name="onay" value="Kabul edildi" v-model="check">
+            Şartları kabul ediyorum
+        </label>
 
-    <br><br>
+        <br><br>
 
-    <button type="button" onclick="validateJS()">JS ile kontrol</button>
-    <button type="button" @click="validateVue">Vue ile kontrol</button>
+        <button type="button" onclick="validateJS()">JS ile kontrol</button>
+        <button type="button" @click="validateVue">Vue ile kontrol</button>
 
-</form>
+        <br>
 
-<p id="error"></p>
-<p>{{ message }}</p>
+        <input type="submit" value="Gönder" class="Gonder">
+    </form>
+
+    <p id="error"></p>
 
 </section>
+
 <script>
 function validateJS() {
 
-    let name = document.querySelector('input[type="text"]').value;
-    let email = document.querySelector('input[type="email"]').value;
-    let phone = document.querySelectorAll('input[type="text"]')[1].value;
+    let name = document.querySelector('input[name="name"]').value;
+    let email = document.querySelector('input[name="email"]').value;
+    let phone = document.querySelector('input[name="telefon"]').value;
+    let city = document.querySelector('select[name="city"]').value;
+    let message = document.querySelector('textarea[name="mesaj"]').value;
+    let onay = document.querySelector('input[name="onay"]').checked;
 
-    let error = "";
+    if (name.trim() === "") {
+        alert("Ad boş olamaz");
+        return false;
+    }
+    if (!email.includes("@")) {
+        alert("Email yanlış");
+        return false;
+    }
+    if (phone.trim() === "" || isNaN(phone)) {
+        alert("Telefon sadece rakam olmalı");
+        return false;
+    }
+    if (city === "") {
+        alert("Şehir seçiniz");
+        return false;
+    }
+    if (message.trim() === "") {
+        alert("Mesaj boş olamaz");
+        return false;
+    }
+    if (!onay) {
+        alert("Şartları kabul edin");
+        return false;
+    }
 
-    if(name === "") {
-        error = "Ad boş olamaz";
-    }
-    else if(!email.includes("@")) {
-        error = "Email yanlış";
-    }
-    else if(isNaN(phone)) {
-        error = "Telefon sadece rakam olmalı";
-    }
-    else {
-        error = "JS kontrol başarılı ✔";
-    }
-
-    document.getElementById("error").innerText = error;
+    return true;
 }
 </script>
+
 <script src="https://unpkg.com/vue@3"></script>
 
 <script>
@@ -144,17 +160,29 @@ const app = Vue.createApp({
     },
     methods: {
         validateVue() {
-            if(this.name === "") {
-                this.message = "Ad boş olamaz";
+            if (this.name.trim() === "") {
+                this.message = "Ad Soyad boş olamaz";
             }
-            else if(!this.email.includes("@")) {
-                this.message = "Email yanlış";
+            else if (this.email.trim() === "" || !this.email.includes("@")) {
+                this.message = "Email formatı yanlış";
             }
-            else if(isNaN(this.phone)) {
-                this.message = "Telefon sadece rakam olmalı";
+            else if (this.phone.trim() === "" || isNaN(this.phone)) {
+                this.message = "Telefon sadece rakamlardan oluşmalıdır";
             }
-            else if(!this.check) {
-                this.message = "Onay gerekli";
+            else if (this.gender === "") {
+                this.message = "Cinsiyet seçilmelidir";
+            }
+            else if (this.interests.length === 0) {
+                this.message = "En az bir ilgi alanı seçilmelidir";
+            }
+            else if (this.city === "") {
+                this.message = "Şehir seçilmelidir";
+            }
+            else if (this.messageText.trim() === "") {
+                this.message = "Mesaj boş olamaz";
+            }
+            else if (!this.check) {
+                this.message = "Şartları kabul etmelisiniz";
             }
             else {
                 this.message = "Vue kontrol başarılı ✔";
@@ -165,6 +193,8 @@ const app = Vue.createApp({
 
 app.mount("#app");
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
