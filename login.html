@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlgi  alanlarım</title>
+     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-       <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+
+     <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
         <div class="container-fluid">
 
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -35,25 +36,48 @@
                     <li class="nav-item">
                         <a class="nav-link" href="iletisim.html">İletişim</a>
                     </li>
-                    <li class="nav-item"><a class="LoginButton" class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="LoginButton"class="nav-link" href="login.html">Login</a></li>
                 </ul>
             </div>
 
         </div>
+
     </nav>
+    <section class="login-page">
 
-    <section class="api-section">
-    <p>Yazılım ve teknoloji alanlarıyla ilgili kitaplar için tıklayınız:</p>
+    <h2>Giriş Yap</h2>
 
-    <button onclick="getBooks()" class="gosterbtn">Kitapları Göster</button>
-    <div id="loader" class="loader"></div>
+    <form action="login.php" method="POST" onsubmit="return loginKontrol()">
 
-<div id="bookList" class="book-list"></div>
+        <input type="email" id="email" name="email" placeholder="Öğrenci maili">
 
-    <div id="bookList" class="book-list"></div>
+        <input type="password" id="password" name="password" placeholder="Şifre">
+
+        <button type="submit">Giriş Yap</button>
+
+    </form>
+
+    <p id="loginError"></p>
+
 </section>
-    <script src="scrpt.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+function loginKontrol() {
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    if (email === "" || password === "") {
+        document.getElementById("loginError").innerText = "Alanlar boş bırakılamaz.";
+        return false;
+    }
+
+    if (!email.includes("@") || !email.endsWith("@sakarya.edu.tr")) {
+        document.getElementById("loginError").innerText = "Geçerli bir Sakarya Üniversitesi maili giriniz.";
+        return false;
+    }
+
+    return true;
+}
+</script>
 </body>
 </html>

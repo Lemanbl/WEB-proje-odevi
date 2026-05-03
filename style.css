@@ -611,3 +611,49 @@ button {
     margin: 30px auto;
     background-color: white;
 }
+.LoginButton{
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #374651;
+    color: #fbf9ee;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.LoginButton:hover {
+    background-color: #292b45;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+.login-page {
+    min-height: 100vh;
+    padding-top: 140px;
+    text-align: center;
+}
+
+.login-page form {
+    max-width: 350px;
+    margin: auto;
+}
+
+.login-page input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+}
+
+.login-page button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: #374651;
+    color: white;
+}
+
+#loginError {
+    color: red;
+    margin-top: 15px;
+}
