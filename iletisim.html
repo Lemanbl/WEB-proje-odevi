@@ -22,177 +22,225 @@
                 <li class="nav-item"><a class="nav-link" href="ozgecmis.html">Özgeçmiş</a></li>
                 <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
                 <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
-                <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi alanlarım</a></li>
+                <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
                 <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-                <li class="nav-item"><a class="LoginButton" class="nav-link" href="login.html">Login</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<section class="iletisim-page">
+<main class="contact-page" id="app">
+    <section class="contact-card">
+        <div class="baslik">
+            
+        <h1>İletişim Formu</h1>
+        <p class="contact-desc">Benimle iletişime geçmek için aşağıdaki formu doldurabilirsiniz.</p>
 
-    <h3>İletişim için formu doldurunuz</h3>
+        </div>
+        <form action="sonuc.php" method="POST" onsubmit="return submitControl()">
 
-    <form id="app" method="POST" action="sonuc.php" onsubmit="return validateJS()">
+            <div class="form-grid">
+                <div class="form-box">
+                    <label>Ad Soyad</label>
+                    <input type="text" name="name" v-model="name" placeholder="Adınızı giriniz">
+                    <small id="errName"></small>
+                </div>
 
-        <input type="text" v-model="name" name="name" placeholder="Ad Soyad">
+                <div class="form-box">
+                    <label>Email</label>
+                    <input type="text" name="email" v-model="email" placeholder="ornek@mail.com">
+                    <small id="errEmail"></small>
+                </div>
 
-        <input type="email" v-model="email" name="email" placeholder="Email">
+                <div class="form-box">
+                    <label>Telefon</label>
+                    <input type="text" name="telefon" v-model="telefon" placeholder="05551234567">
+                    <small id="errTelefon"></small>
+                </div>
 
-        <input type="text" v-model="phone" name="telefon" placeholder="Telefon">
+                <div class="form-box">
+                    <label>Şifre</label>
+                    <input type="password" name="password" v-model="password" placeholder="Şifre giriniz">
+                    <small id="errPassword"></small>
+                </div>
 
-        <input type="password" name="password" placeholder="Şifre">
+                <div class="form-box">
+                    <label>Doğum Tarihi</label>
+                    <input type="date" name="date" v-model="date">
+                    <small id="errDate"></small>
+                </div>
 
-        <input type="date" name="date">
+                <div class="form-box">
+                    <label>Şehir</label>
+                    <select name="city" v-model="city">
+                        <option value="">Şehir seçiniz</option>
+                        <option>Adana</option>
+                        <option>Ankara</option>
+                        <option>Antalya</option>
+                        <option>Bursa</option>
+                        <option>İstanbul</option>
+                        <option>İzmir</option>
+                        <option>Kocaeli</option>
+                        <option>Sakarya</option>
+                    </select>
+                    <small id="errCity"></small>
+                </div>
+            </div>
 
-        <label><b>Favori Renk:</b></label>
-        <input type="color" name="renk">
+            <div class="form-box">
+                <label>Cinsiyet</label>
+                <div class="option-row">
+                    <label><input type="radio" name="gender" value="Kadın" v-model="gender"> Kadın</label>
+                    <label><input type="radio" name="gender" value="Erkek" v-model="gender"> Erkek</label>
+                </div>
+                <small id="errGender"></small>
+            </div>
 
-        <label><b>Memnuniyet:</b></label>
-        <input type="range" name="memnuniyet" min="0" max="10">
+            <div class="form-box">
+                <label>İlgi Alanları</label>
+                <div class="option-row">
+                    <label><input type="checkbox" name="interests[]" value="Yazılım" v-model="interests"> Yazılım</label>
+                    <label><input type="checkbox" name="interests[]" value="Tasarım" v-model="interests"> Tasarım</label>
+                    <label><input type="checkbox" name="interests[]" value="Yapay Zeka" v-model="interests"> Yapay Zeka</label>
+                    <label><input type="checkbox" name="interests[]" value="Spor" v-model="interests"> Spor</label>
+                </div>
+                <small id="errInterests"></small>
+            </div>
 
-        <p><b>Cinsiyet:</b></p>
-        <label>
-            <input type="radio" name="gender" value="Erkek" v-model="gender"> Erkek
-        </label>
-        <label>
-            <input type="radio" name="gender" value="Kadın" v-model="gender"> Kadın
-        </label>
+            <div class="form-grid">
+                <div class="form-box">
+                    <label>Favori Renk</label>
+                    <input type="color" name="renk" v-model="renk">
+                </div>
 
-        <p><b>İlgi Alanları:</b></p>
-        <label>
-            <input type="checkbox" name="interests[]" value="Yazılım" v-model="interests"> Yazılım
-        </label>
-        <label>
-            <input type="checkbox" name="interests[]" value="Tasarım" v-model="interests"> Tasarım
-        </label>
-        <label>
-            <input type="checkbox" name="interests[]" value="Yapay Zeka" v-model="interests"> Yapay Zeka
-        </label>
+                <div class="form-box">
+                    <label>Memnuniyet: {{ memnuniyet }}</label>
+                    <input type="range" name="memnuniyet" min="1" max="10" v-model="memnuniyet">
+                </div>
+            </div>
 
-        <select name="city" v-model="city">
-            <option value="">Şehir seç</option>
-            <option>İstanbul</option>
-            <option>Sakarya</option>
-            <option>Kocaeli</option>
-            <option>İzmir</option>
-            <option>Ankara</option>
-        </select>
+            <div class="form-box">
+                <label>Mesaj</label>
+                <textarea name="mesaj" v-model="mesaj" placeholder="Mesajınızı yazınız"></textarea>
+                <small id="errMesaj"></small>
+            </div>
 
-        <textarea v-model="messageText" name="mesaj" placeholder="Mesaj"></textarea>
+            <div class="form-box">
+                <label>Dosya Yükle</label>
+                <input type="file" name="dosya">
+            </div>
 
-        <input type="file" name="dosya">
+            <div class="form-box">
+                <label class="accept">
+                    <input type="checkbox" name="onay" value="Kabul edildi" v-model="onay">
+                    Form bilgilerimin gönderilmesini kabul ediyorum.
+                </label>
+                <small id="errOnay"></small>
+            </div>
 
-        <label>
-            <input type="checkbox" name="onay" value="Kabul edildi" v-model="check">
-            Şartları kabul ediyorum
-        </label>
+            <div class="button-area">
+                <button type="button" onclick="validateJS()" class="control-btn">JavaScript ile Kontrol</button>
+                <button type="button" @click="validateVue" class="control-btn">Vue ile Kontrol</button>
+                <button type="submit" class="send-btn">Gönder</button>
+            </div>
 
-        <br><br>
+            <p id="jsMessage" class="form-message"></p>
+            <p class="form-message">{{ vueMessage }}</p>
 
-        <button type="button" onclick="validateJS()">JS ile kontrol</button>
-        <button type="button" @click="validateVue">Vue ile kontrol</button>
-
-        <br>
-
-        <input type="submit" value="Gönder" class="Gonder">
-    </form>
-
-    <p id="error"></p>
-
-</section>
-
-<script>
-function validateJS() {
-
-    let name = document.querySelector('input[name="name"]').value;
-    let email = document.querySelector('input[name="email"]').value;
-    let phone = document.querySelector('input[name="telefon"]').value;
-    let city = document.querySelector('select[name="city"]').value;
-    let message = document.querySelector('textarea[name="mesaj"]').value;
-    let onay = document.querySelector('input[name="onay"]').checked;
-
-    if (name.trim() === "") {
-        alert("Ad boş olamaz");
-        return false;
-    }
-    if (!email.includes("@")) {
-        alert("Email yanlış");
-        return false;
-    }
-    if (phone.trim() === "" || isNaN(phone)) {
-        alert("Telefon sadece rakam olmalı");
-        return false;
-    }
-    if (city === "") {
-        alert("Şehir seçiniz");
-        return false;
-    }
-    if (message.trim() === "") {
-        alert("Mesaj boş olamaz");
-        return false;
-    }
-    if (!onay) {
-        alert("Şartları kabul edin");
-        return false;
-    }
-
-    return true;
-}
-</script>
+        </form>
+    </section>
+</main>
 
 <script src="https://unpkg.com/vue@3"></script>
 
 <script>
-const app = Vue.createApp({
+function clearMessages() {
+    document.querySelectorAll("small").forEach(item => item.innerText = "");
+    document.getElementById("jsMessage").innerText = "";
+}
+
+function formCheck(data) {
+    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    const phonePattern = /^[0-9]+$/;
+
+    if (data.name.trim() === "") return ["errName", "Ad Soyad boş bırakılamaz."];
+    if (!emailPattern.test(data.email)) return ["errEmail", "Geçerli bir email adresi giriniz."];
+    if (data.telefon.trim() === "" || !phonePattern.test(data.telefon)) return ["errTelefon", "Telefon sadece rakamlardan oluşmalıdır."];
+    if (data.password.trim() === "") return ["errPassword", "Şifre boş bırakılamaz."];
+    if (data.date === "") return ["errDate", "Lütfen tarih seçiniz."];
+    if (data.city === "") return ["errCity", "Lütfen şehir seçiniz."];
+    if (data.gender === "") return ["errGender", "Lütfen cinsiyet seçiniz."];
+    if (data.interests.length === 0) return ["errInterests", "En az bir ilgi alanı seçiniz."];
+    if (data.mesaj.trim() === "") return ["errMesaj", "Mesaj boş bırakılamaz."];
+    if (!data.onay) return ["errOnay", "Onay kutusunu işaretlemelisiniz."];
+
+    return ["success", "Form başarıyla kontrol edildi ✔"];
+}
+
+function validateJS() {
+    clearMessages();
+
+    const data = {
+        name: document.querySelector('[name="name"]').value,
+        email: document.querySelector('[name="email"]').value,
+        telefon: document.querySelector('[name="telefon"]').value,
+        password: document.querySelector('[name="password"]').value,
+        date: document.querySelector('[name="date"]').value,
+        city: document.querySelector('[name="city"]').value,
+        gender: document.querySelector('[name="gender"]:checked')?.value || "",
+        interests: Array.from(document.querySelectorAll('[name="interests[]"]:checked')),
+        mesaj: document.querySelector('[name="mesaj"]').value,
+        onay: document.querySelector('[name="onay"]').checked
+    };
+
+    const result = formCheck(data);
+
+    if (result[0] === "success") {
+        document.getElementById("jsMessage").innerText = "JavaScript kontrolü başarılı ✔ Form gönderilebilir.";
+        document.getElementById("jsMessage").style.color = "green";
+        return true;
+    } else {
+        document.getElementById(result[0]).innerText = result[1];
+        document.getElementById("jsMessage").innerText = "Lütfen hatalı alanları düzeltiniz.";
+        document.getElementById("jsMessage").style.color = "red";
+        return false;
+    }
+}
+
+function submitControl() {
+    return validateJS();
+}
+
+Vue.createApp({
     data() {
         return {
             name: "",
             email: "",
-            phone: "",
+            telefon: "",
+            password: "",
+            date: "",
+            city: "",
             gender: "",
             interests: [],
-            city: "",
-            messageText: "",
-            check: false,
-            message: ""
+            renk: "#374651",
+            memnuniyet: 5,
+            mesaj: "",
+            onay: false,
+            vueMessage: ""
         }
     },
     methods: {
         validateVue() {
-            if (this.name.trim() === "") {
-                this.message = "Ad Soyad boş olamaz";
-            }
-            else if (this.email.trim() === "" || !this.email.includes("@")) {
-                this.message = "Email formatı yanlış";
-            }
-            else if (this.phone.trim() === "" || isNaN(this.phone)) {
-                this.message = "Telefon sadece rakamlardan oluşmalıdır";
-            }
-            else if (this.gender === "") {
-                this.message = "Cinsiyet seçilmelidir";
-            }
-            else if (this.interests.length === 0) {
-                this.message = "En az bir ilgi alanı seçilmelidir";
-            }
-            else if (this.city === "") {
-                this.message = "Şehir seçilmelidir";
-            }
-            else if (this.messageText.trim() === "") {
-                this.message = "Mesaj boş olamaz";
-            }
-            else if (!this.check) {
-                this.message = "Şartları kabul etmelisiniz";
-            }
-            else {
-                this.message = "Vue kontrol başarılı ✔";
+            const result = formCheck(this);
+
+            if (result[0] === "success") {
+                this.vueMessage = "Vue kontrolü başarılı ✔ Form gönderilebilir.";
+            } else {
+                this.vueMessage = result[1];
             }
         }
     }
-});
-
-app.mount("#app");
+}).mount("#app");
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
