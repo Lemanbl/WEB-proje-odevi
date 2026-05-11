@@ -24,7 +24,8 @@
                 <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
                 <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
                 <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-            </ul>
+                <li class="nav-item"><a class="LoginButton" class="nav-link" href="login.html">Login</a></li>
+                </ul>
         </div>
     </div>
 </nav>
@@ -101,7 +102,6 @@
                 <div class="option-row">
                     <label><input type="checkbox" name="interests[]" value="Yazılım" v-model="interests"> Yazılım</label>
                     <label><input type="checkbox" name="interests[]" value="Tasarım" v-model="interests"> Tasarım</label>
-                    <label><input type="checkbox" name="interests[]" value="Yapay Zeka" v-model="interests"> Yapay Zeka</label>
                     <label><input type="checkbox" name="interests[]" value="Spor" v-model="interests"> Spor</label>
                 </div>
                 <small id="errInterests"></small>
@@ -160,21 +160,24 @@ function clearMessages() {
 }
 
 function formCheck(data) {
-    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phonePattern = /^[0-9]+$/;
 
     if (data.name.trim() === "") return ["errName", "Ad Soyad boş bırakılamaz."];
     if (!emailPattern.test(data.email)) return ["errEmail", "Geçerli bir email adresi giriniz."];
     if (data.telefon.trim() === "" || !phonePattern.test(data.telefon)) return ["errTelefon", "Telefon sadece rakamlardan oluşmalıdır."];
-    if (data.password.trim() === "") return ["errPassword", "Şifre boş bırakılamaz."];
-    if (data.date === "") return ["errDate", "Lütfen tarih seçiniz."];
+    if (data.password.trim() === "") 
+         return ["errPassword", "Şifre boş bırakılamaz."];
+
+    if (data.password.length < 5)
+        return ["errPassword", "Şifre en az 5 karakter olmalıdır."];if (data.date === "") return ["errDate", "Lütfen tarih seçiniz."];
     if (data.city === "") return ["errCity", "Lütfen şehir seçiniz."];
     if (data.gender === "") return ["errGender", "Lütfen cinsiyet seçiniz."];
     if (data.interests.length === 0) return ["errInterests", "En az bir ilgi alanı seçiniz."];
     if (data.mesaj.trim() === "") return ["errMesaj", "Mesaj boş bırakılamaz."];
     if (!data.onay) return ["errOnay", "Onay kutusunu işaretlemelisiniz."];
 
-    return ["success", "Form başarıyla kontrol edildi ✔"];
+    return ["success", "Form başarıyla kontrol edildi !"];
 }
 
 function validateJS() {
@@ -234,7 +237,7 @@ Vue.createApp({
             const result = formCheck(this);
 
             if (result[0] === "success") {
-                this.vueMessage = "Vue kontrolü başarılı ✔ Form gönderilebilir.";
+                this.vueMessage = "Vue kontrolü başarılı! Form gönderilebilir.";
             } else {
                 this.vueMessage = result[1];
             }

@@ -1,19 +1,28 @@
 <?php
 
-$dogruMail = "b241210576@sakarya.edu.tr";
-$dogruSifre = "b241210576";
-
 $email = $_POST["email"] ?? "";
 $password = $_POST["password"] ?? "";
 
-if ($email == $dogruMail && $password == $dogruSifre) {
-    echo "<h1>Hoşgeldiniz b241210576</h1>";
-    echo "<a href='index.html'>Ana sayfaya dön</a>";
+$mailParcala = explode("@", $email);
+
+$ogrenciNo = $mailParcala[0] ?? "";
+
+$mailKontrol = str_ends_with($email, "@sakarya.edu.tr");
+
+if ($mailKontrol && $ogrenciNo == $password) {
+
+    echo "<h1>Hoşgeldiniz $ogrenciNo</h1>";
+    echo "<a href='index.html'>Ana Sayfaya Dön</a>";
+
 } else {
-    echo "<script>
-            alert('Hatalı giriş yaptınız.');
-            window.location.href = 'login.html';
-          </script>";
+
+    echo "
+    <script>
+        alert('Email veya şifre hatalı!');
+        window.location.href='login.html';
+    </script>
+    ";
+
 }
 
 ?>
